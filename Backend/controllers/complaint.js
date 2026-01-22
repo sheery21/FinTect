@@ -14,13 +14,7 @@ export const complaintController = async (req, res) => {
       });
     }
 
-    if (
-      !complaintType ||
-      !category ||
-      !description ||
-      !priority ||
-      !uploadedEvidence
-    ) {
+    if (!complaintType || !category || !description || !priority) {
       return res.status(400).json({
         message: "requied field missing",
         status: false,
@@ -28,23 +22,28 @@ export const complaintController = async (req, res) => {
       });
     }
 
-    await ComplaintModel.create({ ...req.body, createdBy: user._id });
+    const complaint = await ComplaintModel.create({
+      ...req.body,
+      createdBy: user._id,
+      bankId: user.bankId,
+      role: user.role,
+    });
     res.status(200).json({
       message: "Complaint Generated!",
       status: true,
+      complaintId: complaint._id,
     });
   } catch (error) {
-    return req.status(400).json({
-      message: error.messing || "samthing went wrong",
+    return res.status(400).json({
+      message: error.message || "something went wrong",
       status: false,
       data: null,
     });
   }
 };
 
-export const allComplaints = async ( req ,res) =>{
+export const allComplaints = async (req, res) => {
   try {
-
     const user = req.user;
 
     if (!user) {
@@ -55,23 +54,20 @@ export const allComplaints = async ( req ,res) =>{
       });
     }
 
-    console.log( "user" , user);
-    
+    console.log("user", user);
 
-    const data = await ComplaintModel.find({createdBy : user._id})
+    const data = await ComplaintModel.find({ createdBy: user._id });
 
     res.status(200).json({
-      message : "Complaint fetched!",
-      status : true,
-      data 
-    })
-
-    
+      message: "Complaint fetched!",
+      status: true,
+      data,
+    });
   } catch (error) {
     res.status(500).json({
-      message : error.message || "samting went wrong",
-      status : false,
-      data : null
-    })
+      message: error.message || "someting went wrong",
+      status: false,
+      data: null,
+    });
   }
-}
+};

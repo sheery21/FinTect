@@ -1,21 +1,21 @@
 import jwt from "jsonwebtoken";
 import UserModel from "../models/userModel.js";
+import BankOfficerModel from "../models/bank_OfficerModel.js";
 
 export const bank_officerAuth = async (req, res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
-    const isVerified = jwt.verify(token, process.env.SECRET_KEY);
-    console.log("isVerified", isVerified);
-    if (!isVerified) {
+     if (!token) return res.status(401).json({ message: "No token" });
+    const isVerify = jwt.verify(token, process.env.SECRET_KEY);
+
+    if (!isVerify) {
       return res.status(401).json({
         message: "UnAuth user",
         status: false,
       });
     }
 
-    const user = await UserModel.findById(isVerified.id).select("role bankId");
-
-    console.log("user", user);
+    const user = await BankOfficerModel.findById({ _id: isVerify.id });
 
     if (!user) {
       return res.status(401).json({
@@ -32,7 +32,6 @@ export const bank_officerAuth = async (req, res, next) => {
         status: false,
       });
     }
-    console.log("isVerify", user);
   } catch (error) {
     return res.status(401).json({
       message: "UnAuth user",
@@ -40,5 +39,3 @@ export const bank_officerAuth = async (req, res, next) => {
     });
   }
 };
-
-export default bank_officerAuth;
