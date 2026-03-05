@@ -13,6 +13,7 @@ export const complaintController = async (req, res) => {
         data: null,
       });
     }
+    console.log("hello", user);
 
     if (!complaintType || !category || !description || !priority) {
       return res.status(400).json({
@@ -54,9 +55,10 @@ export const allComplaints = async (req, res) => {
       });
     }
 
-    console.log("user", user);
-
-    const data = await ComplaintModel.find({ createdBy: user._id });
+    const data = await ComplaintModel.find({ createdBy: user._id }).populate(
+      "bankId",
+      "bankName bankCode", 
+    );
 
     res.status(200).json({
       message: "Complaint fetched!",
