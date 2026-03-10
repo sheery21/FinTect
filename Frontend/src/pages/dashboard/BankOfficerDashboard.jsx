@@ -27,6 +27,11 @@ const BankOfficerDashboard = () => {
   const handleUpdate = (id, status) => {
     dispatch(updateComplaintStatus({ Cid: id, status }));
   };
+  //   const handleToggleStatus = (comp) => {
+  //   let newStatus = comp.status === "approved" ? "rejected" : "approved";
+
+  //   dispatch(updateComplaintStatus({ Cid: comp._id, status: newStatus }));
+  // };
 
   return (
     <div className="flex bg-gray-100 min-h-screen">
@@ -89,24 +94,40 @@ const BankOfficerDashboard = () => {
                       <td className="p-3">
                         <button
                           onClick={() => handleUpdate(comp._id, "approved")}
-                          disabled={comp.status !== "pending"}
+                          disabled={
+                            activeTab !== "settings" &&
+                            comp.status !== "pending"
+                          }
                           className={`px-3 py-1 rounded mr-2 text-white ${
                             comp.status === "approved"
                               ? "bg-green-600"
                               : "bg-primary"
-                          } ${comp.status !== "pending" && "opacity-50 cursor-not-allowed"}`}
+                          } ${
+                            activeTab !== "settings" &&
+                            comp.status !== "pending"
+                              ? "opacity-50 cursor-not-allowed"
+                              : ""
+                          }`}
                         >
                           Approve
                         </button>
 
                         <button
                           onClick={() => handleUpdate(comp._id, "rejected")}
-                          disabled={comp.status !== "pending"}
+                          disabled={
+                            activeTab !== "settings" &&
+                            comp.status !== "pending"
+                          }
                           className={`px-3 py-1 rounded text-white ${
                             comp.status === "rejected"
                               ? "bg-red-600"
                               : "bg-red-500"
-                          } ${comp.status !== "pending" && "opacity-50 cursor-not-allowed"}`}
+                          } ${
+                            activeTab !== "settings" &&
+                            comp.status !== "pending"
+                              ? "opacity-50 cursor-not-allowed"
+                              : ""
+                          }`}
                         >
                           Reject
                         </button>

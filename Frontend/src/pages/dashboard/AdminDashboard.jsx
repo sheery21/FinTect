@@ -13,7 +13,7 @@ const AdminDashboard = () => {
         <div className="p-6 grid grid-cols-1 md:grid-cols-4 gap-6">
           <AdminStatCard title="Total Users" value="2,450" />
           <AdminStatCard title="Bank Officers" value="42" />
-          <AdminStatCard title="Total Transactions" value="98,230" />
+          <AdminStatCard title="Total Complaints" value="98,230" />
           <AdminStatCard title="System Alerts" value="5" />
         </div>
 

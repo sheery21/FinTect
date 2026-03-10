@@ -9,7 +9,7 @@ docRouts.post(
   "/upload/:complaintId",
   customerAuth,
   upload.any(),
-  docControlers
+  docControlers,
 );
 
 export default docRouts;

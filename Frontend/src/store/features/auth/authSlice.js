@@ -34,7 +34,7 @@ const authSlice = createSlice({
       state.otpVerified = false;
 
       localStorage.removeItem("token");
-  localStorage.removeItem("user");
+      localStorage.removeItem("user");
     },
   },
   extraReducers: (builder) => {
@@ -110,7 +110,7 @@ const authSlice = createSlice({
     });
     builder.addCase(logInWith_Admin_Thunk.fulfilled, (state, { payload }) => {
       state.loading = false;
-      state.user = payload.data;
+      state.user = { ...payload.data, role: payload.role };
       state.token = payload.token;
       state.success = true;
 

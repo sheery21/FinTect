@@ -19,8 +19,6 @@ const LoginForm = ({ role }) => {
     (state) => state.authReducer,
   );
 
-  console.log("user role", user);
-
   useEffect(() => {
     if (loading) {
       Swal.fire({

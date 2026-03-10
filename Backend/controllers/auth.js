@@ -173,7 +173,6 @@ export const logInController = async (req, res) => {
 
     const { role } = user;
 
-    console.log("role", role);
     if (!user.isVerified) {
       return res.status(403).json({
         message:

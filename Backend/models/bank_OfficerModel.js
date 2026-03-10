@@ -27,7 +27,7 @@ const bankOfficerSchema = new mongoose.Schema(
       ref: "bank",
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const BankOfficerModel = mongoose.model("bankOfficer", bankOfficerSchema);

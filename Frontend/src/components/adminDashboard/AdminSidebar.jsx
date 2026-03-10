@@ -15,7 +15,7 @@ const AdminSidebar = () => {
           Bank Officers
         </li>
         <li className="hover:bg-secondary p-2 rounded cursor-pointer">
-          Transactions
+          All Complaints
         </li>
         <li className="hover:bg-secondary p-2 rounded cursor-pointer">
           System Logs
