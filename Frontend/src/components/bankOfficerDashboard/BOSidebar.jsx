@@ -4,7 +4,7 @@ const BOSidebar = ({ activeTab, setActiveTab }) => {
     "dashboard",
     "pending",
     "inProgress",
-    "rejected",
+    "closed",
     "settings",
   ];
   return (

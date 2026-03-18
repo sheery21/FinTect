@@ -45,7 +45,7 @@ const BankOfficerDashboard = () => {
             value={complaints.filter((c) => c.status === "inProgress").length}
           />
           <BOStatCard
-            title="Rejected"
+            title="closed"
             value={complaints.filter((c) => c.status === "closed").length}
           />
           <BOStatCard title="Total Users" value={complaints.length} />
