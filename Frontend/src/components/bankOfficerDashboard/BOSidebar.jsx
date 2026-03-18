@@ -3,7 +3,7 @@ const BOSidebar = ({ activeTab, setActiveTab }) => {
   const menuUtems = [
     "dashboard",
     "pending",
-    "approved",
+    "inProgress",
     "rejected",
     "settings",
   ];

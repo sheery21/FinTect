@@ -18,8 +18,8 @@ const BankOfficerDashboard = () => {
 
   const filteredComplaints = complaints.filter((comp) => {
     if (activeTab === "pending") return comp.status === "pending";
-    if (activeTab === "approved") return comp.status === "approved";
-    if (activeTab === "rejected") return comp.status === "rejected";
+    if (activeTab === "inProgress") return comp.status === "inProgress";
+    if (activeTab === "closed") return comp.status === "closed";
 
     return true;
   });
@@ -27,11 +27,6 @@ const BankOfficerDashboard = () => {
   const handleUpdate = (id, status) => {
     dispatch(updateComplaintStatus({ Cid: id, status }));
   };
-  //   const handleToggleStatus = (comp) => {
-  //   let newStatus = comp.status === "approved" ? "rejected" : "approved";
-
-  //   dispatch(updateComplaintStatus({ Cid: comp._id, status: newStatus }));
-  // };
 
   return (
     <div className="flex bg-gray-100 min-h-screen">
@@ -46,12 +41,12 @@ const BankOfficerDashboard = () => {
             value={complaints.filter((c) => c.status === "pending").length}
           />
           <BOStatCard
-            title="Approved Today"
-            value={complaints.filter((c) => c.status === "approved").length}
+            title="inProgress Today"
+            value={complaints.filter((c) => c.status === "inProgress").length}
           />
           <BOStatCard
             title="Rejected"
-            value={complaints.filter((c) => c.status === "rejected").length}
+            value={complaints.filter((c) => c.status === "closed").length}
           />
           <BOStatCard title="Total Users" value={complaints.length} />
         </div>
@@ -80,9 +75,9 @@ const BankOfficerDashboard = () => {
                       <td className="p-3">{comp.category}</td>
                       <td
                         className={`p-3 capitalize font-semibold ${
-                          comp.status === "approved"
+                          comp.status === "inProgress"
                             ? "text-green-600"
-                            : comp.status === "rejected"
+                            : comp.status === "closed"
                               ? "text-red-600"
                               : comp.status === "pending"
                                 ? "text-yellow-600"
@@ -93,13 +88,13 @@ const BankOfficerDashboard = () => {
                       </td>
                       <td className="p-3">
                         <button
-                          onClick={() => handleUpdate(comp._id, "approved")}
+                          onClick={() => handleUpdate(comp._id, "inProgress")}
                           disabled={
                             activeTab !== "settings" &&
                             comp.status !== "pending"
                           }
                           className={`px-3 py-1 rounded mr-2 text-white ${
-                            comp.status === "approved"
+                            comp.status === "inProgress"
                               ? "bg-green-600"
                               : "bg-primary"
                           } ${
@@ -109,11 +104,11 @@ const BankOfficerDashboard = () => {
                               : ""
                           }`}
                         >
-                          Approve
+                          InProgress
                         </button>
 
                         <button
-                          onClick={() => handleUpdate(comp._id, "rejected")}
+                          onClick={() => handleUpdate(comp._id, "closed")}
                           disabled={
                             activeTab !== "settings" &&
                             comp.status !== "pending"
@@ -129,7 +124,7 @@ const BankOfficerDashboard = () => {
                               : ""
                           }`}
                         >
-                          Reject
+                          Closed
                         </button>
                       </td>
                     </tr>

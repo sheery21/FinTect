@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { adminComplaint } from "./admin.thunks";
+import { getAdminComplaint } from "./admin.thunks";
 
 const adminSlice = createSlice({
   name: "admin",
@@ -11,14 +11,14 @@ const adminSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(adminComplaint.pending, (state) => {
+      .addCase(getAdminComplaint.pending, (state) => {
         state.loading = true;
       })
-      .addCase(adminComplaint.fulfilled, (state, payload) => {
+      .addCase(getAdminComplaint.fulfilled, (state, payload) => {
         state.loading = false;
         state.complaints = payload.payload.data;
       })
-      .addCase(adminComplaint.rejected, (state, payload) => {
+      .addCase(getAdminComplaint.rejected, (state, payload) => {
         state.loading = false;
         state.error = payload.payload?.message;
       });
@@ -29,4 +29,4 @@ const { reducer, actions } = adminSlice;
 
 const {} = actions;
 
-export const bankOfficerReducer = reducer;
+export const adminReducer = reducer;

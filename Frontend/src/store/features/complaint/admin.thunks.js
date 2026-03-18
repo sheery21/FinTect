@@ -11,7 +11,7 @@ export const getAdminComplaint = createAsyncThunk(
       const token = localStorage.getItem("token");
 
       const res = await axios.get(URL, {
-        Headers: {
+        headers: {
           Authorization: `Bearer ${token}`,
         },
       });
@@ -37,14 +37,14 @@ export const getAllUsers = createAsyncThunk(
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       return res.data.data.users;
     } catch (error) {
       return rejectWithValue(error.response?.data);
     }
-  }
+  },
 );
 
 export const getAllBankOfficers = createAsyncThunk(
@@ -59,14 +59,14 @@ export const getAllBankOfficers = createAsyncThunk(
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       return res.data.data.officer;
     } catch (error) {
       return rejectWithValue(error.response?.data);
     }
-  }
+  },
 );
 
 export const deleteComplaint = createAsyncThunk(
@@ -82,12 +82,12 @@ export const deleteComplaint = createAsyncThunk(
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       return res.data.id;
     } catch (error) {
       return rejectWithValue(error.response?.data);
     }
-  }
+  },
 );

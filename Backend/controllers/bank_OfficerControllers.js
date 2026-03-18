@@ -35,7 +35,7 @@ export const bank_Officer_updateControllers = async (req, res) => {
     const data = await ComplaintModel.findByIdAndUpdate(
       Cid,
       { status },
-      { new: true },
+      { new: true  , runValidators : true},
     );
     res.status(200).json({
       message: "complaints status updated!",
@@ -49,3 +49,7 @@ export const bank_Officer_updateControllers = async (req, res) => {
     });
   }
 };
+
+export const commit_On_Bank_Officer = async (req ,res) =>{
+  
+}
