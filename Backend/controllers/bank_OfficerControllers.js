@@ -50,4 +50,6 @@ export const bank_Officer_updateControllers = async (req, res) => {
   }
 };
 
-export const commit_On_Bank_Officer = async (req, res) => {};
+export const commit_On_Bank_Officer = async (req, res) => {
+  
+};
