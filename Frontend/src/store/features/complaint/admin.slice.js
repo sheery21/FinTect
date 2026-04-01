@@ -28,7 +28,7 @@ const adminSlice = createSlice({
       })
       .addCase(getAllUsers.fulfilled, (state, payload) => {
         state.loading = false;
-        state.allUser = payload.payload.data;
+        state.allUser = payload.payload.users;
       })
       .addCase(getAllUsers.rejected, (state, payload) => {
         state.loading = false;

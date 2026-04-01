@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import AdminNavbar from "../../components/adminDashboard/AdminNavbar";
 import AdminSidebar from "../../components/adminDashboard/AdminSidebar";
 import AdminStatCard from "../../components/adminDashboard/AdminStatCard";
-import { getAdminComplaint } from "../../store/features/complaint/admin.thunks";
+import { getAdminComplaint, getAllUsers } from "../../store/features/complaint/admin.thunks";
 import { useEffect, useState } from "react";
 
 const AdminDashboard = () => {
@@ -13,12 +13,13 @@ const AdminDashboard = () => {
 
   const [activePage, setActivePage] = useState("dashboard");
 
-  console.log("complaints", complaints);
-  console.log("allUser", allUser);
-
+  
   useEffect(() => {
     dispatch(getAdminComplaint());
+    dispatch( getAllUsers());
   }, [dispatch]);
+  console.log("complaints", complaints);
+  console.log("allUser", allUser);
 
   return (
     <div className="flex bg-gray-100 min-h-screen">
