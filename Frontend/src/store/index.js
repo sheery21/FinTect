@@ -6,9 +6,9 @@ import { adminReducer } from "./features/complaint/admin.slice";
 const store = configureStore({
   reducer: {
     authReducer,
-     admin: adminReducer,
-    "complaint": complaintReducer,
-    "bankOfficer": bankOfficerReducer
+    admin: adminReducer,
+    complaint: complaintReducer,
+    bankOfficer: bankOfficerReducer,
   },
 });
 
