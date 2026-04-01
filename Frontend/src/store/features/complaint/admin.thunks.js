@@ -29,10 +29,11 @@ export const getAllUsers = createAsyncThunk(
   "admin/getUsers",
   async (_, { rejectWithValue }) => {
     try {
+      const URL = import.meta.env
+        .VITE_LOCAL_HOST_GET_ALL_USERS;
       const token = localStorage.getItem("token");
 
-      const res = await axios.get(
-        "http://localhost:5000/api/admin/getAllusers",
+      const res = await axios.get(URL,
         {
           headers: {
             Authorization: `Bearer ${token}`,

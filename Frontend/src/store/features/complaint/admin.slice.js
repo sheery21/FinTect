@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAdminComplaint } from "./admin.thunks";
+import { getAdminComplaint, getAllUsers } from "./admin.thunks";
 
 const adminSlice = createSlice({
   name: "admin",
@@ -19,6 +19,17 @@ const adminSlice = createSlice({
         state.complaints = payload.payload.data;
       })
       .addCase(getAdminComplaint.rejected, (state, payload) => {
+        state.loading = false;
+        state.error = payload.payload?.message;
+      })
+        .addCase(getAllUsers.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getAllUsers.fulfilled, (state, payload) => {
+        state.loading = false;
+        state.complaints = payload.payload.data;
+      })
+      .addCase(getAllUsers.rejected, (state, payload) => {
         state.loading = false;
         state.error = payload.payload?.message;
       });
