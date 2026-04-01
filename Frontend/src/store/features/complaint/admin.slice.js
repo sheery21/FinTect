@@ -5,6 +5,7 @@ const adminSlice = createSlice({
   name: "admin",
   initialState: {
     complaints: [],
+    allUser:[],
     loading: false,
     error: null,
   },
@@ -27,7 +28,7 @@ const adminSlice = createSlice({
       })
       .addCase(getAllUsers.fulfilled, (state, payload) => {
         state.loading = false;
-        state.complaints = payload.payload.data;
+        state.allUser = payload.payload.data;
       })
       .addCase(getAllUsers.rejected, (state, payload) => {
         state.loading = false;

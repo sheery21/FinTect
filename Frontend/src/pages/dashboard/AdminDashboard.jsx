@@ -9,11 +9,12 @@ const AdminDashboard = () => {
   const dispatch = useDispatch();
 
   const { complaints } = useSelector((state) => state.admin);
-  const {  } = useSelector((state) => state.adminReducer);
+  const { allUser  } = useSelector((state) => state.admin);
 
   const [activePage, setActivePage] = useState("dashboard");
 
   console.log("complaints", complaints);
+  console.log("allUser", allUser);
 
   useEffect(() => {
     dispatch(getAdminComplaint());
