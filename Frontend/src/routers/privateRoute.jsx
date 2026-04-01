@@ -2,7 +2,11 @@ import { Navigate, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const PrivateRoute = ({ allowedRoles }) => {
-  const { user, token } = useSelector((state) => state.authReducer);
+  const { user, token , loading } = useSelector((state) => state.authReducer);
+
+  console.log("user", user, " token", token);
+
+  if (loading) return null;
 
   // not logged in
   if (!token || !user) {

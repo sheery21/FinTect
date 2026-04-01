@@ -109,8 +109,9 @@ const authSlice = createSlice({
       state.success = false;
     });
     builder.addCase(logInWith_Admin_Thunk.fulfilled, (state, { payload }) => {
+      console.log("FULL PAYLOAD:", payload);
       state.loading = false;
-      state.user = { ...payload.data, role: payload.role };
+      state.user = payload.data;
       state.token = payload.token;
       state.success = true;
 
