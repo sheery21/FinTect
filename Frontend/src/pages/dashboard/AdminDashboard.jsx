@@ -2,21 +2,23 @@ import { useDispatch, useSelector } from "react-redux";
 import AdminNavbar from "../../components/adminDashboard/AdminNavbar";
 import AdminSidebar from "../../components/adminDashboard/AdminSidebar";
 import AdminStatCard from "../../components/adminDashboard/AdminStatCard";
-import { getAdminComplaint, getAllUsers } from "../../store/features/complaint/admin.thunks";
+import {
+  getAdminComplaint,
+  getAllUsers,
+} from "../../store/features/complaint/admin.thunks";
 import { useEffect, useState } from "react";
 
 const AdminDashboard = () => {
   const dispatch = useDispatch();
 
   const { complaints } = useSelector((state) => state.admin);
-  const { allUser  } = useSelector((state) => state.admin);
+  const { allUser } = useSelector((state) => state.admin);
 
   const [activePage, setActivePage] = useState("dashboard");
 
-  
   useEffect(() => {
     dispatch(getAdminComplaint());
-    dispatch( getAllUsers());
+    dispatch(getAllUsers());
   }, [dispatch]);
   console.log("complaints", complaints);
   console.log("allUser", allUser);

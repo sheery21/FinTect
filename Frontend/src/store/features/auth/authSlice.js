@@ -119,7 +119,7 @@ const authSlice = createSlice({
       state.success = true;
 
       localStorage.setItem("token", payload.token);
-      localStorage.setItem("user", JSON.stringify(payload.data));
+      localStorage.setItem("user", JSON.stringify({...payload.data ,role : payload.role}));
     });
     builder.addCase(logInWith_Admin_Thunk.rejected, (state, { payload }) => {
       state.loading = false;

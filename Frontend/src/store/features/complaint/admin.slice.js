@@ -26,9 +26,9 @@ const adminSlice = createSlice({
         .addCase(getAllUsers.pending, (state) => {
         state.loading = true;
       })
-      .addCase(getAllUsers.fulfilled, (state, payload) => {
+      .addCase(getAllUsers.fulfilled, (state, action) => {
         state.loading = false;
-        state.allUser = payload.payload.users;
+        state.allUser = action.payload;
       })
       .addCase(getAllUsers.rejected, (state, payload) => {
         state.loading = false;

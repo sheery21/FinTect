@@ -90,6 +90,7 @@ export const getAllBanks_Officer = async (req, res) => {
     });
   }
 };
+
 export const deleteUser = async (req, res) => {
   try {
     const { id, type } = req.params;
