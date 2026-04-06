@@ -13,6 +13,7 @@ const AdminDashboard = () => {
 
   const { complaints } = useSelector((state) => state.admin);
   const { allUser } = useSelector((state) => state.admin);
+  const { allBankOfficer } = useSelector((state) => state.admin);
 
   const [activePage, setActivePage] = useState("dashboard");
 
@@ -22,6 +23,7 @@ const AdminDashboard = () => {
   }, [dispatch]);
   console.log("complaints", complaints);
   console.log("allUser", allUser);
+  console.log("allBankOfficer", allBankOfficer);
 
   return (
     <div className="flex bg-gray-100 min-h-screen">

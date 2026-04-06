@@ -29,17 +29,14 @@ export const getAllUsers = createAsyncThunk(
   "admin/getUsers",
   async (_, { rejectWithValue }) => {
     try {
-      const URL = import.meta.env
-        .VITE_LOCAL_HOST_GET_ALL_USERS;
+      const URL = import.meta.env.VITE_LOCAL_HOST_GET_ALL_USERS;
       const token = localStorage.getItem("token");
 
-      const res = await axios.get(URL,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+      const res = await axios.get(URL, {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-      );
+      });
 
       return res.data.data.users;
     } catch (error) {
@@ -53,15 +50,14 @@ export const getAllBankOfficers = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem("token");
+      const URL = import.meta.env.VITE_LOCAL_HOST_GET_ALL_BANK_OFFICER_API;
 
-      const res = await axios.get(
-        "http://localhost:5000/api/admin/getAllBank_officer",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+      console.log("API URL:", URL);
+      const res = await axios.get(URL, {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-      );
+      });
 
       return res.data.data.officer;
     } catch (error) {
