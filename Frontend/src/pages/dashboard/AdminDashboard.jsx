@@ -4,6 +4,7 @@ import AdminSidebar from "../../components/adminDashboard/AdminSidebar";
 import AdminStatCard from "../../components/adminDashboard/AdminStatCard";
 import {
   getAdminComplaint,
+  getAllBankOfficers,
   getAllUsers,
 } from "../../store/features/complaint/admin.thunks";
 import { useEffect, useState } from "react";
@@ -20,6 +21,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     dispatch(getAdminComplaint());
     dispatch(getAllUsers());
+    dispatch(getAllBankOfficers());
   }, [dispatch]);
   console.log("complaints", complaints);
   console.log("allUser", allUser);
@@ -137,6 +139,8 @@ const AdminDashboard = () => {
             ))}
           </div>
         )}
+
+        
 
         {activePage === "dashboard" && (
           <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">

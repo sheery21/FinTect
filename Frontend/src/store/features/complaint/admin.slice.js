@@ -1,16 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  getAdminComplaint,
-  getAllBankOfficers,
-  getAllUsers,
-} from "./admin.thunks";
+import { getAdminComplaint, getAllBankOfficers, getAllUsers } from "./admin.thunks";
 
 const adminSlice = createSlice({
   name: "admin",
   initialState: {
     complaints: [],
     allUser: [],
-    allBankOfficer: [],
+    getAllBankOfficers: [],
     loading: false,
     error: null,
   },
@@ -18,7 +14,7 @@ const adminSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getAdminComplaint.pending, (state) => {
-        state.loading = true;
+        state.loading = true
       })
       .addCase(getAdminComplaint.fulfilled, (state, payload) => {
         state.loading = false;
@@ -44,7 +40,7 @@ const adminSlice = createSlice({
       })
       .addCase(getAllBankOfficers.fulfilled, (state, action) => {
         state.loading = false;
-        state.allBankOfficer = action.payload;
+        state.getAllBankOfficers = action.payload;
       })
       .addCase(getAllBankOfficers.rejected, (state, payload) => {
         state.loading = false;

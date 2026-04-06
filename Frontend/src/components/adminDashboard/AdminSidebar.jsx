@@ -15,7 +15,9 @@ const AdminSidebar = ({setActivePage }) => {
         >
           Manage Users
         </li>
-        <li className="hover:bg-secondary p-2 rounded cursor-pointer">
+        <li className="hover:bg-secondary p-2 rounded cursor-pointer"
+        onClick={() => setActivePage("BankOfficer")}
+        >
           Bank Officers
         </li>
         <li className="hover:bg-secondary p-2 rounded cursor-pointer"
