@@ -10,7 +10,9 @@ const AdminSidebar = ({setActivePage }) => {
         >
           Dashboard
         </li>
-        <li className="hover:bg-secondary p-2 rounded cursor-pointer">
+        <li className="hover:bg-secondary p-2 rounded cursor-pointer"
+        onClick={() => setActivePage("users")}
+        >
           Manage Users
         </li>
         <li className="hover:bg-secondary p-2 rounded cursor-pointer">

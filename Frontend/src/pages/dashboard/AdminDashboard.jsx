@@ -101,6 +101,41 @@ const AdminDashboard = () => {
           </div>
         )}
 
+        {activePage === "users" && (
+          <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {allUser?.map((user) => (
+              <div
+                key={user._id}
+                className="bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition"
+              >
+                <h3 className="text-lg font-bold text-primary mb-2">
+                  {user.name}
+                </h3>
+
+                <p className="text-sm text-gray-500 mb-1">
+                  Email: {user.email}
+                </p>
+
+                <p className="text-sm text-gray-500 mb-1">Role: {user.role}</p>
+
+                <p className="text-xs text-gray-400 mb-3">
+                  {new Date(user.createdAt).toLocaleDateString()}
+                </p>
+
+                <div className="flex justify-between">
+                  <button className="bg-primary text-white px-3 py-1 rounded text-sm">
+                    View
+                  </button>
+
+                  <button className="bg-red-500 text-white px-3 py-1 rounded text-sm">
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
         {activePage === "dashboard" && (
           <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-white rounded-lg shadow p-6">
