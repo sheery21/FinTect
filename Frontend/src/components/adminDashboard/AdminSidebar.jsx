@@ -1,27 +1,31 @@
 // src/components/adminDashboard/AdminSidebar.jsx
-const AdminSidebar = ({setActivePage }) => {
+const AdminSidebar = ({ setActivePage }) => {
   return (
     <div className="w-64 bg-primary text-white min-h-screen p-6">
       <h2 className="text-2xl font-bold mb-8">Admin Panel</h2>
 
       <ul className="space-y-4">
-        <li className="hover:bg-secondary p-2 rounded cursor-pointer"
-        onClick={() => setActivePage("dashboard")}
+        <li
+          className="hover:bg-secondary p-2 rounded cursor-pointer"
+          onClick={() => setActivePage("dashboard")}
         >
           Dashboard
         </li>
-        <li className="hover:bg-secondary p-2 rounded cursor-pointer"
-        onClick={() => setActivePage("users")}
+        <li
+          className="hover:bg-secondary p-2 rounded cursor-pointer"
+          onClick={() => setActivePage("users")}
         >
           Manage Users
         </li>
-        <li className="hover:bg-secondary p-2 rounded cursor-pointer"
-        onClick={() => setActivePage("BankOfficer")}
+        <li
+          className="hover:bg-secondary p-2 rounded cursor-pointer"
+          onClick={() => setActivePage("bankOfficers")}
         >
           Bank Officers
         </li>
-        <li className="hover:bg-secondary p-2 rounded cursor-pointer"
-        onClick={() => setActivePage("complaints")}
+        <li
+          className="hover:bg-secondary p-2 rounded cursor-pointer"
+          onClick={() => setActivePage("complaints")}
         >
           All Complaints
         </li>
