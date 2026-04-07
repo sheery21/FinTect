@@ -44,6 +44,7 @@ const AdminDashboard = () => {
             </div>
           </>
         )}
+
         {activePage === "complaints" && (
           <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {complaints?.map((item) => (
@@ -141,48 +142,46 @@ const AdminDashboard = () => {
         )}
 
         {activePage === "bankOfficers" && (
-  <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    {allBankOfficer?.map((officer) => (
-      <div
-        key={officer._id}
-        className="bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition"
-      >
-        <h3 className="text-lg font-bold text-primary mb-2">
-          {officer.name}
-        </h3>
+          <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {allBankOfficer?.map((officer) => (
+              <div
+                key={officer._id}
+                className="bg-white rounded-xl shadow-md p-5 hover:shadow-lg transition"
+              >
+                <h3 className="text-lg font-bold text-primary mb-2">
+                  {officer.name}
+                </h3>
 
-        <p className="text-sm text-gray-500 mb-1">
-          Email: {officer.email}
-        </p>
+                <p className="text-sm text-gray-500 mb-1">
+                  Email: {officer.email}
+                </p>
 
-        {/* Bank Name (populate se aa raha hai) */}
-        <p className="text-sm text-gray-500 mb-1">
-          Bank: {officer.bankId?.name}
-        </p>
+                {/* Bank Name (populate se aa raha hai) */}
+                <p className="text-sm text-gray-500 mb-1">
+                  Bank: {officer.bank}
+                </p>
 
-        <p className="text-sm text-gray-500 mb-1">
-          Role: {officer.role}
-        </p>
+                <p className="text-sm text-gray-500 mb-1">
+                  Role: {officer.role}
+                </p>
 
-        <p className="text-xs text-gray-400 mb-3">
-          {new Date(officer.createdAt).toLocaleDateString()}
-        </p>
+                <p className="text-xs text-gray-400 mb-3">
+                  {new Date(officer.createdAt).toLocaleDateString()}
+                </p>
 
-        <div className="flex justify-between">
-          <button className="bg-primary text-white px-3 py-1 rounded text-sm">
-            View
-          </button>
+                <div className="flex justify-between">
+                  <button className="bg-primary text-white px-3 py-1 rounded text-sm">
+                    View
+                  </button>
 
-          <button className="bg-red-500 text-white px-3 py-1 rounded text-sm">
-            Delete
-          </button>
-        </div>
-      </div>
-    ))}
-  </div>
-)}
-
-        
+                  <button className="bg-red-500 text-white px-3 py-1 rounded text-sm">
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
 
         {activePage === "dashboard" && (
           <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">

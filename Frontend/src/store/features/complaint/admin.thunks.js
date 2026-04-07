@@ -59,7 +59,7 @@ export const getAllBankOfficers = createAsyncThunk(
         },
       });
 
-      return res.data.data.officer;
+      return res.data;
     } catch (error) {
       return rejectWithValue(error.response?.data);
     }
