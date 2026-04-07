@@ -76,11 +76,15 @@ export const getAllBanks_Officer = async (req, res) => {
   try {
     const officer = await BankOfficerModel.find().populate("bankId", "name");
 
+    const formattedData = officer.map((officer) => ({
+      _id: officer._id,
+      officerName: officer.email,
+      bank: officer.baseModelName,
+      bank1: officer.bankId ? officer.bankId.name : "No Bank Assigned",
+    }));
     res.status(200).json({
       status: true,
-      data: {
-        officer,
-      },
+      data: formattedData,
     });
   } catch (error) {
     res.status(500).json({
